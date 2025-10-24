@@ -214,7 +214,8 @@ Write-Host "Execution Policy: " -NoNewLine -BackgroundColor Black -ForegroundCol
 Write-Host "$ExecutionPolicy`n" -NoNewLine -BackgroundColor Black -ForegroundColor Yellow
 Write-Host "Installed Modules: " -NoNewLine -BackgroundColor Black -ForegroundColor Magenta
 if ($Modules = Get-InstalledModule) {
-	Write-Host "$Modules" -NoNewLine -BackgroundColor Black -ForegroundColor Yellow
+    $moduleNames = $modules.Name
+	Write-Host "$moduleNames" -NoNewLine -BackgroundColor Black -ForegroundColor Yellow
 } else {
 	Write-Host "None" -NoNewLine -BackgroundColor Black -ForegroundColor Yellow
 }
