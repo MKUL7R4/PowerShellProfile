@@ -1,8 +1,8 @@
 function prompt 
 {
-$Time = (Get-Date).ToString("hh:mm") 
-$host.ui.rawui.WindowTitle = (Get-Location)
-"$Time > "
+    $Time = (Get-Date).ToString("hh:mm") 
+    $host.ui.rawui.WindowTitle = (Get-Location)
+    "$Time > "
 }
 
 Function Write-Animation {
@@ -142,9 +142,6 @@ Function Write-Animation {
             } until ($Char -eq $Length)
         }
     }
-    END {
-        # This is the end, my friend.
-    }
 }
 
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\agnoster.omp.json" | Invoke-Expression
@@ -196,13 +193,12 @@ Write-Host ""
 
 $Major = ($PSVersionTable).PSVersion.Major
 $Minor = ($PSVersionTable).PSVersion.Minor
-$Build = ($PSVersionTable).PSVersion.Build
-$Revision = ($PSVersionTable).PSVersion.Revision
-$FullPSVersion = "$Major"+"."+"$Minor"+"."+"$Build"+"."+"$Revision"
+$Build = ($PSVersionTable).PSVersion.Patch
+$FullPSVersion = "$Major"+"."+"$Minor"+"."+"$Build"
 
 Write-Host "PowerShell Version: " -NoNewLine -BackgroundColor Black -ForegroundColor Magenta
 Write-Host "$FullPSVersion`n" -NoNewLine -BackgroundColor Black -ForegroundColor Yellow
-$VerbosePreference = "Continue"
+$VerbosePreference = "SilentlyContinue"
 Write-Host "Verbose Preference: " -NoNewLine -BackgroundColor Black -ForegroundColor Magenta
 Write-Host "$VerbosePreference`n" -NoNewLine -BackgroundColor Black -ForegroundColor Yellow
 Write-Host "ErrorAction Preference: " -NoNewLine -BackgroundColor Black -ForegroundColor Magenta
@@ -217,6 +213,9 @@ $ExecutionPolicy = Get-ExecutionPolicy
 Write-Host "Execution Policy: " -NoNewLine -BackgroundColor Black -ForegroundColor Magenta
 Write-Host "$ExecutionPolicy`n" -NoNewLine -BackgroundColor Black -ForegroundColor Yellow
 Write-Host "Installed Modules: " -NoNewLine -BackgroundColor Black -ForegroundColor Magenta
-Get-InstalledModule
-
-powercfg -restoredefaultschemes
+if ($Modules = Get-InstalledModule) {
+	Write-Host "$Modules" -NoNewLine -BackgroundColor Black -ForegroundColor Yellow
+} else {
+	Write-Host "None" -NoNewLine -BackgroundColor Black -ForegroundColor Yellow
+}
+Write-Host ""
