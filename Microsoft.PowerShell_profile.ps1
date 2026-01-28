@@ -253,8 +253,8 @@ $randomRuneArray = foreach ($i in 1..60) {
 $runeString = $randomRuneArray -join ""
 Write-Animation -Object "$runeString" -Mode Fire -NoNewLine
 Write-Host ""
-Write-Animation "~~ Welcome to PowerSpell ~~" -Mode Cosmic
-Write-Animation "~~~ Profile by MKultra ~~~~" -Mode Cosmic
+Write-Animation "~~ ᛞᛊᚳᛈᛟᛖᛊ ᚾᛟ ᚹᛟᛞᛊᚱ§ᚹᛊᚳᚳ ~~" -Mode Cosmic
+Write-Animation "~~~ ᚹᚱᛟᚨᛐᚳᛊ ᛒᚴ ᛗᛕultra ~~~~" -Mode Cosmic
 
 $Major = ($PSVersionTable).PSVersion.Major
 $Minor = ($PSVersionTable).PSVersion.Minor
